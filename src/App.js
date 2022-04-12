@@ -1,49 +1,53 @@
-import { useState, useEffect } from "react";
-import { Container, TextField, Typography, Box } from "@mui/material";
+import { useState, useEffect} from "react";
+import { Container, TextField, Typography } from "@mui/material";
 import isChar from './util/isChar';
 import dictionary from './util/morseDictionary';
+import MorseBox from "./components/MorseBox";
 
 function App() {
-  const [userInput, setInput] = useState("");
+  const [textInput, setTextInput] = useState("");
   const [translatedText, setTranslatedText] = useState("")
   const [textError, setTextError] = useState(false);
 
   const handleTextChange = (e) => {
     const {value} = e.target;
-    setInput(`${value}`);
+    //Gets box height to allow auto scroll to the bottom as the box fills up
+    let scrollHeight = document.getElementById('morse-box').scrollHeight;
+    document.getElementById("morse-box").scrollTo(0, scrollHeight);
+    setTextInput(`${value}`);
   };
 
-  useEffect(() => {
+  useEffect(()=> { //Activates whenever something is typed in input box. Updates immediately
     setTextError(false);
     let translation = "";
-    const text = userInput.split("");
-    text.forEach((char, index) => {
-      //Checks if its a number
+    const text = textInput.split("");
+    text.forEach(char => {
+      //Check if its whitespace
       if(char === " ") {
-        console.log("here space")
         translation += "/ ";
       }
+      //Checks if its a number
       else if(!isNaN(char)) {
-        console.log('here num')
         const number = `${dictionary.numbers[char]} `;
         translation += number;
       }
+      //Check if its characters
       else if(isChar(char)) {
-        console.log("here char")
         const lowercaseLetter = char.toLowerCase();
         translation += `${dictionary.lowercase[lowercaseLetter]} `;
       }
+      //Check if its symbol
       else if(isNaN(char) && !isChar(char) && dictionary.symbols[char]) {
         const symbol = `${dictionary.symbols[char]} `;
-        console.log("here", symbol);
         translation += symbol;
       }
+      //If invalid character set error to true
       else {
         setTextError(true);
       }
     });
     setTranslatedText(translation);
-  }, [userInput]);
+  }, [textInput]);
 
   return (
     <Container
@@ -68,30 +72,18 @@ function App() {
 
       <TextField 
        sx={{width: '66%'}}
+       autoComplete="off"
        color= "primary"
        rows={2}
        name="text" 
        label="Write here" 
-       value={userInput} 
+       value={textInput} 
        error={textError} 
        onChange={(e) => handleTextChange(e)}
       />
-      <Box 
-       sx={{
-         bgcolor: 'background.default',
-         padding: '3%',
-         fontSize: "1.75rem",
-         border: "lightgrey solid 1px",
-         borderRadius: "5px",
-         letterSpacing: "5px",
-         width: "60%",
-         height: "10rem",
-         overflowX: "hidden",
-         overflowY: "auto",
-       }}
-      >
-        {translatedText}
-      </Box>
+      <MorseBox
+        translatedText={translatedText}
+      />
     </Container>
   );
 }
