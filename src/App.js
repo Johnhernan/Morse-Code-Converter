@@ -1,7 +1,7 @@
 import { useState, useEffect} from "react";
-import { Container, TextField, Typography } from "@mui/material";
-import isChar from './util/isChar';
-import dictionary from './util/morseDictionary';
+import { Container, TextField, Typography, InputBase } from "@mui/material";
+import isChar from './utils/isChar';
+import dictionary from './utils/morseDictionary';
 import MorseBox from "./components/MorseBox";
 
 function App() {
@@ -59,19 +59,25 @@ function App() {
         rowGap: "20px",
         minHeight: "100vh",
         minWidth: "100%",
-        bgcolor: "background.paper"
+        
       }}
       className="App"
     >
       <div className="header-text">
-        <Typography variant="h4">Morse Code Converter</Typography>
+        <Typography variant="h3">Morse Code Converter</Typography>
         <Typography>
           Type a sentence and find out what it looks like in morse code.
         </Typography>
       </div>
 
-      <TextField 
-       sx={{width: '66%'}}
+      <InputBase
+       sx={{
+        width: '66%',
+        borderRadius: "5px",
+        border: "lightgrey solid 1px",
+        bgcolor: 'background.default'
+      }}
+      
        autoComplete="off"
        color= "primary"
        rows={2}

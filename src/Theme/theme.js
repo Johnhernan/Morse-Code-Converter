@@ -43,39 +43,39 @@ export default createTheme({
     
     typography: {
         htmlFontSize: 16,
-        fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
+        fontFamily: '"Oswald", sans-serif "Roboto", "Helvetica", "Arial", sans-serif',
         fontSize: 14,
         fontWeightLight: 300,
         fontWeightRegular: 400,
         fontWeightMedium: 500,
         fontWeightBold: 700,
         h1: {
-            fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
+            fontFamily: '"Oswald", sans-serif, "Roboto", "Helvetica", "Arial", sans-serif',
             fontWeight: 300,
             fontSize: "6rem"
         }, 
         h2: {
-            fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
+            fontFamily: '"Oswald", sans-serif, "Roboto", "Helvetica", "Arial", sans-serif',
             fontWeight: 300,
             fontSize: "3.75rem"
         }, 
         h3: {
-            fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
+            fontFamily: '"Oswald", sans-serif, "Roboto", "Helvetica", "Arial", sans-serif',
             fontWeight: 300,
             fontSize: "3rem"
         }, 
         h4: {
-            fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
+            fontFamily: '"Oswald", sans-serif, "Roboto", "Helvetica", "Arial", sans-serif',
             fontWeight: 300,
             fontSize: "2.125rem"
         }, 
         h5: {
-            fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
+            fontFamily: '"Oswald", sans-serif, "Roboto", "Helvetica", "Arial", sans-serif',
             fontWeight: 300,
             fontSize: "1.5rem"
         }, 
         h6: {
-            fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
+            fontFamily: '"Oswald", sans-serif, "Roboto", "Helvetica", "Arial", sans-serif',
             fontWeight: 300,
             fontSize: "1.25rem"
         }, 
